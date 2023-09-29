@@ -6,12 +6,13 @@ dotenv.config()
 export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
-
+        let isNumber = +username
+        if (typeof (isNumber) != 'number') isNumber = undefined
         const user = await User
             .findOne({
                 $or: [
                     { email: username },
-                    { phone: username }
+                    { phone: isNumber || '' }
                 ]
             })
             .select('username _id password refreshToken')
@@ -35,7 +36,7 @@ export const login = async (req, res) => {
                 username: user?.name
             },
             process.env.ACCESS_SECRET,
-            { expiresIn: "10s" }
+            { expiresIn: "1d" }
         );
         const refreshToken = jwt.sign(
             {

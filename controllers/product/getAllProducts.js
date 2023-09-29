@@ -2,12 +2,13 @@ import Product from "../../models/productSchema.js";
 
 export const getAllProduct = async (req, res) => {
     try {
-        const { name, type, brand, priceLow, priceHigh } = req.query
+        const { name, type, brand, priceLow, priceHigh, color } = req.query
         const result = await Product.find({
             $and: [
                 { name: { $regex: name || '', $options: 'i' } },
                 { brand: { $regex: brand || '', $options: 'i' } },
                 { type: { $regex: type || '', $options: 'i' } },
+                { color: { $regex: color || '', $options: 'i' } },
                 {
                     $or: [
                         {

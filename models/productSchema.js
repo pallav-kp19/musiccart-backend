@@ -7,7 +7,6 @@ const productSchema = Schema({
     color: String,
     isFeatured: Boolean,
     isAvailable: Boolean,
-    shortDescription: String,
     longDescription: String,
     price: Number,
     rating: Number,

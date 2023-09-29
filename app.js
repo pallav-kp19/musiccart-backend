@@ -21,8 +21,8 @@ app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use("/auth", authRoutes)
-app.use("/api", tokenValidator, indexRoutes)
-app.post("/addProduct", addProduct)
+app.use("/api", indexRoutes)
+app.post("/addProducts", addProduct)
 
 const httpServer = http.createServer(app)
 
