@@ -16,7 +16,7 @@ export const changeQuantity = async (req, res) => {
             }
         )
             .populate('cart.product')
-            .select('cart -_id')
+            .select('cart -_id cartTotalAmount')
         res.status(200).json({ message: "Quantity Changed", result })
             ;
     } catch (error) {

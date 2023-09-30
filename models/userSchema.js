@@ -21,10 +21,12 @@ const userSchema = Schema({
         type: String,
         required: true
     },
-    cart: [{
-        product: Types.ObjectId,
-        quantity: Number
-    }]
-}, { timestamps: true })
+    cart: {
+        type: [Types.ObjectId],
+        ref: 'Product'
+    },
+}, {
+    timestamps: true,
+})
 
 export default model('User', userSchema)

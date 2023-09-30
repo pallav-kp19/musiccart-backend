@@ -14,7 +14,7 @@ export const placeOrder = async (req, res) => {
                     new: true
                 }
             )
-            .populate("cart.product")
+            .populate("cart")
             .select('cart -_id')
         res
             .status(200)

@@ -13,7 +13,7 @@ export const removeFromCart = async (req, res) => {
             { new: true }
         )
             .populate('cart.product')
-            .select('cart -_id')
+            .select('cart -_id cartTotalAmount')
         res.status(200).json({ message: "Item removed from  Cart", result })
     } catch (error) {
         res.status(500).json({ message: "Inernal Error Occured!" })
